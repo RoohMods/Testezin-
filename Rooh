@@ -1,0 +1,47 @@
+import PySimpleGUI as sg
+
+sg.theme('DarkPurple4') # Cor geral do Projeto - Turma A
+
+def tela1():
+    layout = [
+        [sg.Text('Consulta MEI')], # Titúlo do Projeto  - Turma A
+        [sg.Text('Digite a renda Bruta: '), sg.InputText()], # Do campo onde será digitado o valor - Turma A
+        [sg.Button('Prosseguir ->')] # Titúlo do Botão  - Turma A
+]
+
+    window = sg.Window('Programação Turma A', layout)  # Nome que ficará na layout - Turma A
+
+    while True:
+        event, values = window.read()
+
+        if event in ('Prosseguir ->'): # Botão que prosseguirá - Turma A
+            if float(values[0]) <= 28559.70: # Valor Minímo - Turma A
+                sg.popup('O Valor Inserido não deve ser declarado') # Caso o valor não seja maior que o requirído - Turma A
+            elif float(values[0]) > 81000: # Valor Maxímo - Turma A
+                sg.popup('O Valor Inserido é Superior ao Limite em que o MEI pode ter, você deve migrar para MicroEmpresa') # Caso passe o valor requirído - Turma A
+            elif float(values[0]) > 0: # Se der erro, Fechará o Programa - Turma A
+                window.close()
+                tela2()
+
+        elif event == sg.WIN_CLOSED:
+            break # Quebra do Codígo - Turma A
+0
+def tela2():
+    layout = [[sg.Text('Concluído, valor aprovado!')], # Caso seja concluído o processo - Turma A 
+              [sg.Button('<- Voltar')]] # Botão Voltará para a tela 1 - Turma A
+
+    window = sg.Window('Turma A diz:', layout, size=(300 ,70)) # Nome que ficará na layout e o tamanho dela - Turma A
+
+    while True:
+        event, values = window.read()
+
+        if event == sg.WINDOW_CLOSED:
+            break # Quebra do Codígo - Turma A
+        elif event == 'Voltar para primeira tela':
+            window.close()
+            tela1()
+
+    window.close()
+
+
+tela1()
