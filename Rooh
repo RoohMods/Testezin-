@@ -1,28 +1,29 @@
 import PySimpleGUI as sg
 
-tema1 = sg.theme('DarkPurple4') # Cor da tela 1 do Projeto - Turma A
+tema1 = sg.theme('DarkGrey15') # Cor da tela 1 do Projeto - Turma A
 
 def tela1(tema1): # Primeira Tela - Turma A
     layout = [
         [sg.Text('Consulta MEI')], # Titúlo do Projeto  - Turma A
-        [sg.Text('Digite a renda Bruta: '), sg.InputText()], # Do campo onde será digitado o valor - Turma A
-        [sg.Button('Prosseguir ->')] # Titúlo do Botão  - Turma A
+        [sg.Text('Digite a renda Bruta:'), sg.InputText()], # Do campo onde será digitado o valor - Turma A
+        [sg.Button('Prosseguir ➡')] # Titúlo do Botão  - Turma A
 ]
 
-    window = sg.Window('Programação Turma A', layout)  # Nome que ficará na layout - Turma A
+    window = sg.Window('Turma A diz:', layout, size=(300 ,100))  # Nome que ficará na layout - Turma A
 
     while True:
         event, values = window.read()
 
-        if event in ('Prosseguir ->'): # Botão que prosseguirá - Turma A
+        if event in ('Prosseguir ➡'): # Botão que prosseguirá - Turma A
             if float(values[0]) <= 28559.70: # Valor Minímo - Turma A
                 sg.popup('O Valor Inserido não deve ser declarado') # Caso o valor não seja maior que o requirído - Turma A
             elif float(values[0]) > 81000: # Valor Maxímo - Turma A
                 sg.popup('O Valor Inserido é Superior ao Limite em que o MEI pode ter, você deve migrar para MicroEmpresa') # Caso passe o valor requirído - Turma A
             elif float(values[0]) > 0: # Se der erro, Fechará o Programa - Turma A
-                window.close()
-                tema2 = sg.theme('DarkBlue2') # Cor da tela 2 do Projeto - Turma A
-                tela2(tema2)
+                window.close() # Executar a fechamento do Prograna - Turma A
+
+                tema2 = sg.theme('DarkPurple4') # Cor da tela 2 do Projeto - Turma A
+                tela2(tema2) # Segunda Tela - Turma A
 
         elif event == sg.WIN_CLOSED:
             break # Quebra do Codígo - Turma A
@@ -30,7 +31,7 @@ def tela1(tema1): # Primeira Tela - Turma A
 
 def tela2(tema2):
     layout = [[sg.Text('Concluído, valor aprovado!')], # Caso seja concluído o processo - Turma A 
-              [sg.Button('<- Voltar')]] # Botão Voltará para a tela 1 - Turma A
+              [sg.Button('⬅ Voltar')]] # Botão Voltará para a tela 1 - Turma A
 
     window = sg.Window('Turma A diz:', layout, size=(300 ,70)) # Nome que ficará na layout e o tamanho dela - Turma A
 
@@ -47,5 +48,3 @@ def tela2(tema2):
 
 
 tela1(tema1)
-
-# Rooh Mods
