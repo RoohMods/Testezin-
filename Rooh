@@ -20,7 +20,7 @@ def tela1(tema1): # Primeira Tela - Turma A
             elif float(values[0]) > 81000: # Valor Maxímo - Turma A
                 sg.popup('O Valor Inserido é Superior ao Limite em que o MEI pode ter, você deve migrar para MicroEmpresa') # Caso passe o valor requirído - Turma A
             elif float(values[0]) > 0: # Se der erro, Fechará o Programa - Turma A
-                window.close() # Executar a fechamento do Prograna - Turma A
+                window.close() # Executar a fechamento do Programa - Turma A
 
                 tema2 = sg.theme('DarkPurple4') # Cor da tela 2 do Projeto - Turma A
                 tela2(tema2) # Segunda Tela - Turma A
