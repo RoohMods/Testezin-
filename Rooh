@@ -1,8 +1,8 @@
 import PySimpleGUI as sg
 
-sg.theme('DarkPurple4') # Cor geral do Projeto - Turma A
+tema1 = sg.theme('DarkPurple4') # Cor da tela 1 do Projeto - Turma A
 
-def tela1():
+def tela1(tema1): # Primeira Tela - Turma A
     layout = [
         [sg.Text('Consulta MEI')], # Titúlo do Projeto  - Turma A
         [sg.Text('Digite a renda Bruta: '), sg.InputText()], # Do campo onde será digitado o valor - Turma A
@@ -21,12 +21,14 @@ def tela1():
                 sg.popup('O Valor Inserido é Superior ao Limite em que o MEI pode ter, você deve migrar para MicroEmpresa') # Caso passe o valor requirído - Turma A
             elif float(values[0]) > 0: # Se der erro, Fechará o Programa - Turma A
                 window.close()
-                tela2()
+                tema2 = sg.theme('DarkBlue2') # Cor da tela 2 do Projeto - Turma A
+                tela2(tema2)
 
         elif event == sg.WIN_CLOSED:
             break # Quebra do Codígo - Turma A
-0
-def tela2():
+
+
+def tela2(tema2):
     layout = [[sg.Text('Concluído, valor aprovado!')], # Caso seja concluído o processo - Turma A 
               [sg.Button('<- Voltar')]] # Botão Voltará para a tela 1 - Turma A
 
@@ -44,4 +46,6 @@ def tela2():
     window.close()
 
 
-tela1()
+tela1(tema1)
+
+# Rooh Mods
