@@ -1,4 +1,4 @@
-import PySimpleGUI as sg
+import PySimpleGUI as sg 
 
 def criar_menu():
     menu_def = [
@@ -15,8 +15,7 @@ def criar_menu():
 
 
 
-sg.theme('DarkBrown4')
-
+sg.theme('DarkGrey8') # Já definido! não altere sem perguntar!
 def telaapresentacao():
         
         layout = [
@@ -128,7 +127,7 @@ def tela1(tema1):
                 elif float(values[0]) > 0:
                     RendaBruta = values[0]
                     window.close()
-                    tema2 = sg.theme('DarkPurple4')
+                    tema2 = sg.theme('DarkBlue7')
                     tela2(tema2,RendaBruta)
                     break
             elif event in (sg.WIN_CLOSED):
@@ -155,7 +154,8 @@ def tela2(tema2,RendaBruta):
                     Despesa = float(values[0]) 
                     DespesaRenda = float(RendaBruta) - float(Despesa)
                     window.close()
-                    tela3(RendaBruta,DespesaRenda)
+                    tema3 = sg.theme('PhytonPlus')
+                    tela3(tema3, RendaBruta,DespesaRenda)
                     break
                 elif float(values[0]) > (float(RendaBruta) * 0.8):
                     sg.popup('O Valor Inserido é Superior ao Limite em que o MEI pode ter, você deve migrar para MicroEmpresa', font=('Helvetica', 16))
@@ -165,7 +165,7 @@ def tela2(tema2,RendaBruta):
             continue    
     window.close()
 
-def tela3(RendaBruta,DespesaRenda):
+def tela3(tema3, RendaBruta,DespesaRenda):
     layout = [
             [sg.Frame(" Tela de Declaração de Ocupação do MEI ", font = ('Helvetica', 14) ,layout=[       
             [sg.Text('Indique qual é a sua ocupação para receber isenção: ', font = ('Helvetica', 16)),sg.OptionMenu(['Comércio','Transporte','Serviços em Geral'], k = 'Escolha')],
@@ -185,19 +185,22 @@ def tela3(RendaBruta,DespesaRenda):
                 isencao = float(RendaBruta) * 0.08
                 RendaTributavel = float(DespesaRenda) - float(isencao)
                 window.close()
-                tela4(RendaTributavel,isencao)
+                tema4 = sg.theme('Phyton')
+                tela4(tema4,RendaTributavel,isencao)
                 break
              elif values['Escolha'] in 'Transporte':
                 isencao = float(RendaBruta) * 0.16
                 RendaTributavel = float(DespesaRenda) - float(isencao)
                 window.close()
-                tela4(RendaTributavel,isencao)
+                tema4 = sg.theme('Phyton')
+                tela4(tema4,RendaTributavel,isencao)
                 break
              elif values['Escolha'] in 'Serviços em Geral':
                 isencao = float(RendaBruta) * 0.32
                 RendaTributavel = float(DespesaRenda) - float(isencao)
                 window.close()
-                tela4(RendaTributavel,isencao)
+                tema4 = sg.theme('Phyton')
+                tela4(tema4,RendaTributavel,isencao)
                 break
              elif event in (sg.WIN_CLOSED):
                     break
@@ -205,7 +208,7 @@ def tela3(RendaBruta,DespesaRenda):
             continue
     window.close()
 
-def tela4(RendaTributavel,isencao):
+def tela4(tema4,RendaTributavel, isencao):
     texto = 'Você deve declarar esse valor, porém Não PRECISARÁ PAGAR NADA, já que é menor de R$: 28559.70' if RendaTributavel <= 28559.70 else 'Você terá que pagar a Receita Federal, quando fizer a Declaração Escolha a Opção Alíquota Simples'
     layout = [
             [sg.Frame(" Tela de Demonstração da Renda Tributavél ", font = ('Helvetica', 14),layout=[       
